@@ -1,0 +1,1 @@
+This repository is intended to cover basic bash commands and executables
