@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(printf '0x%04x' $i)
+echo $(printf '0x%04x' $DECIMAL)
