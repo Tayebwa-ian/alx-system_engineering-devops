@@ -1,9 +1,9 @@
 # SSH Client configuration
-file { '/home/.ssh':
+file { '/../../etc/ssh':
   ensure  => directory,
 }
 
-file { '/home/.ssh/config':
+file { '/../../etc/ssh/ssh_config':
   ensure  => file,
   owner   => 'root',
   group   => 'root',
