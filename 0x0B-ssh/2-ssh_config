@@ -1,0 +1,3 @@
+Host Ubuntu
+     IdentityFile ~/.ssh/school
+     PasswordAuthentication no
