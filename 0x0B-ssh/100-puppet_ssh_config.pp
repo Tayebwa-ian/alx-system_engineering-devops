@@ -1,5 +1,6 @@
 # SSH Client configuration
-file { '~/.ssh/config':
+file {'ssh_config_file':
+  path    => '/home/3015f484ce90/.ssh/config',
   ensure  => present,
   owner   => 'root',
   group   => 'root',
