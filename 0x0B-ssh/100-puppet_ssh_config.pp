@@ -1,5 +1,5 @@
 # SSH Client configuration
-file { '~/.ssg/config':
-  ensure  => 'present',
-  content => 'Host Ubuntu\n\tIdentityFile ~/.ssh/school\n\tPasswordAuthentication no'
+file { 'home/ubuntu/.ssh/config':
+  ensure  => present,
+  content => "Host Ubuntu\n\tIdentityFile ~/.ssh/school\n\tPasswordAuthentication no",
 }
