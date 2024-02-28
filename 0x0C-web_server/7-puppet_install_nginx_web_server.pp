@@ -1,6 +1,6 @@
 # Script to install nginx using puppet
 exec {'install_update':
-  command  => 'sudo apt-get -y update ; sudo apt install nginx',
+  command  => 'sudo apt-get -y update ; sudo apt-get -y install nginx',
   provider => shell,
 
 }
@@ -25,7 +25,7 @@ exec {'Hello':
   provider => shell,
 }
 
-exec {'sudo sed -i "48i \tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;\n\t}\n\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}" /etc/nginx/sites-available/default':
+exec {'sudo sed -i "48i\\\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;\n\t}\n\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"':
   provider => shell,
 }
 
