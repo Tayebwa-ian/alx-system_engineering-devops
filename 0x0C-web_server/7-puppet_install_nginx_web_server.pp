@@ -1,6 +1,6 @@
 # Script to install nginx using puppet
 exec {'install_update':
-  command  => 'sudo apt-get -y update',
+  command  => 'sudo apt-get -y update ; sudo apt install nginx',
   provider => shell,
 
 }
