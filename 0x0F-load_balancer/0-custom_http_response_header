@@ -2,4 +2,5 @@
 # Configure Nginx so that its HTTP response contains a custom header
 hostname=$(hostname)
 text="\n\t# add a custom response header\n\tadd_header X-Served-By"
-sed -i "/http {/ a\\${text} $hostname\n;" sample
+sudo sed -i "/http {/ a\\${text} $hostname\n;" /etc/nginx/nginx.conf
+sudo service nginx restart
