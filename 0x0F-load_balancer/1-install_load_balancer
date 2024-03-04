@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install and configure HAproxy
-sudo apt-get update
-sudo apt install haproxy
+sudo apt-get -y update
+sudo apt -y install haproxy
 sudo ufw allow 80/tcp
 sudo service haproxy start
 config="\nfrontend alx_frontend\n\tbind *:80\n\tdefault_backend alx_backend\n"
