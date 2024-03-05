@@ -38,7 +38,7 @@ exec {'configure':
 }
 
 exec {'response_header':
-  command  => 'sed -i "/\t\t# First attempt/ i\\n\t\t# add a custom response header\n\t\tadd_header X-Served-By 475467-web-02;\n;" /etc/nginx/sites-available/default',
+  command  => 'sed -i "/\t\t# First attempt/ i\\n\t\t# add a custom response header\n\t\tadd_header X-Served-By 475467-web-02;\n" /etc/nginx/sites-available/default',
   provider => shell,
   require  => Exec['configure']
 }
