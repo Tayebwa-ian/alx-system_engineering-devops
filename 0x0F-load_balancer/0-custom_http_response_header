@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 # Configure Nginx so that its HTTP response contains a custom header
 hostname=$(hostname)
+#!/usr/bin/env bash
+# Installing Nginx on Server and redirect
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo chown -R "$USER":"$USER" /var/www/
+sudo chown -R "$USER":"$USER" /etc/nginx
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+line="\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=dQw4w9WgXQ;\n\t}\n"
+sudo sed -i "48i\\${line}" /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/404.html
+line2="\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
+sudo sed -i "52i\\${line2}" /etc/nginx/sites-available/default
 text="\n\t\t# add a custom response header\n\t\tadd_header X-Served-By"
 sudo sed -i "/\t\t# First attempt/ i\\${text} $hostname;\n" /etc/nginx/sites-available/default
 sudo service nginx restart
