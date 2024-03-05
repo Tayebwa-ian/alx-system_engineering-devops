@@ -1,13 +1,14 @@
 # Script to install nginx using puppet
-exec {'install_update':
-  command  => 'sudo apt-get -y update ; sudo apt-get -y install nginx',
+$hostname = $facts['hostname']
+exec {'installations':
+  command  => 'sudo apt-get -y update ; sudo apt-get -y install nginx ; sudo apt -y upgrade puppet',
   provider => shell,
 
 }
 
 package {'nginx':
   ensure  => 'present',
-  require => Exec['install_update'],
+  require => Exec['installations'],
 }
 
 exec {'change_owner':
@@ -38,7 +39,7 @@ exec {'configure':
 }
 
 exec {'response_header':
-  command  => 'sed -i "/\t\t# First attempt/ i\\\n\t\t# add a custom response header\n\t\tadd_header X-Served-By 475467-web-02;\n" /etc/nginx/sites-available/default',
+  command  => 'sed -i "/\t\t# First attempt/ i\\\n\t\t# add a custom response header\n\t\tadd_header X-Served-By ${hostname};\n" /etc/nginx/sites-available/default',
   provider => shell,
   require  => Exec['configure']
 }
