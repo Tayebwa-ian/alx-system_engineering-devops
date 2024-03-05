@@ -2,5 +2,5 @@
 # Configure Nginx so that its HTTP response contains a custom header
 hostname=$(hostname)
 text="\n\t\t# add a custom response header\n\t\tadd_header X-Served-By"
-sudo sed -i "/404;/ a\\${text} $hostname\n;" /etc/nginx/sites-available/default
+sudo sed -i "/\t\t# First attempt/ i\\${text} $hostname;\n" /etc/nginx/sites-available/default
 sudo service nginx restart
