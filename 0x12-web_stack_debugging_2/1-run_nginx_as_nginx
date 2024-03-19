@@ -11,4 +11,3 @@ for pid in $(pidof nginx); do
     kill "$pid"
 done
 sudo service nginx start
-
