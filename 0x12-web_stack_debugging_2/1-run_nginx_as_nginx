@@ -5,8 +5,6 @@ sudo chown -R nginx:nginx /var
 sudo mkdir -p /var/lib/nginx/run
 sudo touch /var/lib/nginx/run/nginx.pid
 sudo sed -i '/^pid/s/.*/pid \/var\/lib\/nginx\/run\/nginx.pid;/' /etc/nginx/nginx.conf
-sudo sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
-for pid in $(pidof nginx); do
-    sudo kill "$pid"
-done
+sudo sed -i 's/80.+\;/8080/' /etc/nginx/sites-enabled/default
+sudo pkill nginx
 sudo -u nginx service nginx start
