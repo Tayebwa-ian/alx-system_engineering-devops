@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 # run nginx as a non-root user (nginx)
 
-sudo service nginx stop
-sudo chown -R nginx:nginx /var/log/nginx
-sudo chown -R nginx:nginx /var/lib/nginx
-sudo chown -R nginx:nginx /var/www/html
-sed -i -E 's/#user.+\;/user nginx;/' /etc/nginx/nginx.conf
-sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
+sudo chown -R nginx:nginx /var
+sudo mkdir -p /var/lib/nginx/run
+sudo touch /var/lib/nginx/run/nginx.pid
+sudo sed -i '/^pid/s/.*/pid \/var\/lib\/nginx\/run\/nginx.pid;/' /etc/nginx/nginx.conf
+sudo sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
 for pid in $(pidof nginx); do
-    kill "$pid"
+    sudo kill "$pid"
 done
-sudo service nginx start
+sudo -u nginx service nginx start
