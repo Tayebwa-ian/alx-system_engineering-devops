@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # run nginx as a non-root user (nginx)
-sudo chown -R nginx:nginx /var
-sudo chown -R nginx:nginx /run
+sudo chown -R nginx:nginx /var /run
 sudo sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
 sudo pkill nginx
 sudo -u nginx service nginx start
