@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''Task 3 : Count it!'''
-import pprint
 import re
 import requests
 
