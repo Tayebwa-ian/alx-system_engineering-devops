@@ -12,8 +12,9 @@ def number_of_subscribers(subreddit) -> int:
         subreddit: a subreddit to use
     Return: the number of subscribers or 0 if subreddit is invalid
     """
+    headers = {"user_agent": "tayebwa"}
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    req = requests.get(url)
+    req = requests.get(url, headers=headers, allow_redirects=False)
     if req.status_code == 200:
         subcribers = req.json().get("data").get("subscribers")
         return subcribers
