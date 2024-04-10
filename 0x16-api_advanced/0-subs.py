@@ -2,8 +2,7 @@
 """
 Use the reddit api to query and make analysis
 """
-import requests
-
+from requests import get
 
 def number_of_subscribers(subreddit) -> int:
     """
@@ -14,7 +13,7 @@ def number_of_subscribers(subreddit) -> int:
     """
     headers = {"user_agent": "tayebwa"}
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    req = requests.get(url, headers=headers, allow_redirects=False)
+    req = get(url, headers=headers, allow_redirects=False)
     if req.status_code == 200:
         subcribers = req.json().get("data").get("subscribers")
         return subcribers

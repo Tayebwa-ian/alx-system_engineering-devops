@@ -2,7 +2,7 @@
 """
 Use the reddit api to query and make analysis
 """
-import requests
+from requests import get
 
 
 def top_ten(subreddit) -> None:
@@ -13,7 +13,7 @@ def top_ten(subreddit) -> None:
     headers = {"user_agent": "tayebwa"}
     params = {"limit": 10}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    req = requests.get(url, headers=headers, allow_redirects=False,
+    req = get(url, headers=headers, allow_redirects=False,
                        params=params)
     print(req.status_code)
     if req.status_code == 200:
