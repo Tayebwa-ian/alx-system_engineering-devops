@@ -15,7 +15,6 @@ def top_ten(subreddit) -> None:
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     req = get(url, headers=headers, allow_redirects=False,
                        params=params)
-    print(req.status_code)
     if req.status_code == 200:
         data = req.json().get("data").get("children")
         for article in data:
