@@ -5,12 +5,10 @@ Use the reddit api to query and make analysis
 import requests
 
 
-def top_ten(subreddit):
+def top_ten(subreddit) -> None:
     """
-    Find the number of subscribers for a given subreddit
-    Arg:
-        subreddit: a subreddit to use
-    Return: the number of subscribers or 0 if subreddit is invalid
+    prints the titles of the first 10 hot posts listed for a given subreddit.
+    Return: None
     """
     headers = {"user_agent": "tayebwa"}
     params = {"limit": 10}
