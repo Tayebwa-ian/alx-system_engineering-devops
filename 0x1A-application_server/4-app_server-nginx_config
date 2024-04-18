@@ -1,0 +1,11 @@
+# configure Nginx to serve AirBnB_clone_v3 with gunicorn
+server {
+    listen 80;
+    server_name amobit.tech www.amobit.tech;
+    access_log  /var/log/nginx/hbnb_v3.log;
+
+    location / {
+        proxy_pass http://127.0.0.1:5002/;
+        add_header X-Served-By 475467-web-01;
+    }
+}
